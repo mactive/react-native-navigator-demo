@@ -12,10 +12,8 @@ const {
 
 const styles = StyleSheet.create({
   row: {
-    borderColor: 'grey',
-    borderWidth: 1,
     padding: 20,
-    backgroundColor: '#3a5795',
+    backgroundColor: '#64B5F6',
     margin: 5,
   },
   text: {

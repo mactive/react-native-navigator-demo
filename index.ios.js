@@ -4,7 +4,7 @@
  */
 'use strict';
 import React from 'react-native'
-import Profile from './app/views/Profile'
+import Contacts from './app/views/Profile'
 import RefreshList from './app/views/RefreshList'
 import Login from './app/views/Login'
 
@@ -26,22 +26,46 @@ class RNNavigatorDemo extends Component {
     super(props);
     // 初始状态
     this.state = {
-      selectedTab: 'redTab',
-      notifCount: 2
+      selectedTab: 'search',
+      notifCount: 2,
     };
   }
 
-  _renderContent(_color: string, pageText: string){
+  _renderNavigatorView(view){
+    let currentView = view || this.state.selectedTab
+    let navigatorRef = currentView  + 'Ref'
     return (
-      <View style={styles.container}>
-        <Text style={styles.tabText}>{pageText}</Text>
-        <Text style={styles.tabText}> need to login to view more</Text>
-        <TouchableHighlight style={[styles.button,{backgroundColor:_color}]} onPress={() => this.props.navigator.push({id: 'test'})}>
-          <Text>Login</Text>
-        </TouchableHighlight>
-      </View>
+      <Navigator
+        ref={navigatorRef}
+        initialRoute={{view: currentView }}
+        renderScene={this._renderScene.bind(this)}
+      />
     )
   }
+
+  _renderScene(route, navigator){
+    // debugger;
+    switch (route.view){
+      case 'search':
+        return <RefreshList navigator={navigator} />
+      break;
+      case 'contacts':
+        return <Contacts navigator={navigator} />
+      break;
+    }
+  }
+
+  // _renderContent(_color: string, pageText: string){
+  //   return (
+  //     <View style={styles.container}>
+  //       <Text style={styles.tabText}>{pageText}</Text>
+  //       <Text style={styles.tabText}> need to login to view more</Text>
+  //       <TouchableHighlight style={[styles.button,{backgroundColor:_color}]} onPress={() => this.props.navigator.push({id: 'test'})}>
+  //         <Text>Login</Text>
+  //       </TouchableHighlight>
+  //     </View>
+  //   )
+  // }
 
   render() {
     return (
@@ -51,25 +75,26 @@ class RNNavigatorDemo extends Component {
         <TabBarIOS.Item
           title="List"
           systemIcon="search"
-          selected={this.state.selectedTab === 'blueTab'}
+          selected={this.state.selectedTab === 'search'}
           onPress={() => {
             this.setState({
-              selectedTab: 'blueTab',
+              selectedTab: 'search',
             });
           }}>
-          {this._renderContent('#2196F3', 'Blue Tab')}
+          {this._renderNavigatorView('search')}
         </TabBarIOS.Item>
         <TabBarIOS.Item
-          systemIcon="Profile"
+          systemIcon="contacts"
           badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
-          selected={this.state.selectedTab === 'redTab'}
+          selected={this.state.selectedTab === 'contacts'}
+          title='contacts'
           onPress={() => {
             this.setState({
-              selectedTab: 'redTab',
+              selectedTab: 'contacts',
               notifCount: this.state.notifCount + 1,
             });
           }}>
-          {this._renderContent('#F44336', 'Need login')}
+          {this._renderNavigatorView('contacts')}
         </TabBarIOS.Item>
       </TabBarIOS>
     );

@@ -21,7 +21,7 @@ const {
 } = Dimensions.get('window')
 
 
-class Login extends Component {
+class Profile extends Component {
   // 构造
   constructor(props) {
     super(props);
@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
   container:{
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: '#FF80AB'
   },
   title:{
     fontSize: 20,
@@ -54,4 +55,4 @@ const styles = StyleSheet.create({
   }
 })
 
-module.exports = Login;
+module.exports = Profile;
