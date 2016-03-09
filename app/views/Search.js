@@ -73,7 +73,6 @@ class RefreshControlExample extends React.Component {
     };
   }
 
-
   _onClick(row) {
     row.clicks++;
     this.setState({
@@ -88,8 +87,8 @@ class RefreshControlExample extends React.Component {
       return <Row key={ii} data={row} onClick={this._onClick.bind(this)}/>;
     });
     return (
-      <View>
-      <NavBar info={{title:'我的银行卡'}}></NavBar>
+      // <View>
+      //   <NavBar info={{title:'我的银行卡'}}></NavBar>
       <ScrollView
         style={styles.scrollview}
         refreshControl={
@@ -104,7 +103,7 @@ class RefreshControlExample extends React.Component {
         }>
         {rows}
       </ScrollView>
-      </View>
+        // </View>
     );
   }
 

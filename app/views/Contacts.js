@@ -7,7 +7,6 @@
 import React from 'react-native'
 
 const {
-  AppRegistry,
   Component,
   StyleSheet,
   Text,
@@ -43,14 +42,14 @@ class Contacts extends Component {
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#FF80AB'
+    alignItems: 'center',
+    backgroundColor: '#FFCDD2'
   },
   title:{
     fontSize: 20,
     height:80,
-    width: width/2,
+    width: width-40,
     textAlign: 'center'
   }
 })
