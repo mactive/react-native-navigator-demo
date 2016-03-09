@@ -1,6 +1,6 @@
 'use strict';
+import React from 'react-native'
 
-const React = require('react-native');
 const {
   ScrollView,
   StyleSheet,

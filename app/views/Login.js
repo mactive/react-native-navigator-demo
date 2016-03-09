@@ -4,14 +4,16 @@
  */
 
 'use strict';
-import React, {
+import React from 'react-native'
+
+const {
   AppRegistry,
   Component,
   StyleSheet,
   Text,
   View,
   Dimensions
-} from 'react-native';
+} = React;
 
 const {
   width,
@@ -39,7 +41,7 @@ class Login extends Component {
   }
 }
 
-const styles = Stylesheet.create({
+const styles = StyleSheet.create({
   container:{
     flex: 1,
     flexDirection: 'column',
@@ -48,7 +50,7 @@ const styles = Stylesheet.create({
   title:{
     fontSize: 20,
     height:80,
-    widht: width/2,
+    width: width/2,
     textAlign: 'center'
   }
 })

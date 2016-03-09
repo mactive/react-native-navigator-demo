@@ -5,7 +5,7 @@
 'use strict';
 import React from 'react-native'
 import Profile from './app/views/Profile'
-import RefreshList from './app/view/RefreshList'
+import RefreshList from './app/views/RefreshList'
 import Login from './app/views/Login'
 
 const {
