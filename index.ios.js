@@ -4,9 +4,10 @@
  */
 'use strict';
 import React from 'react-native'
-import Contacts from './app/views/Profile'
-import RefreshList from './app/views/RefreshList'
+import Contacts from './app/views/Contacts'
+import Search from './app/views/Search'
 import Login from './app/views/Login'
+import Sample from './app/views/Sample'
 
 const {
   AppRegistry,
@@ -37,7 +38,7 @@ class RNNavigatorDemo extends Component {
     return (
       <Navigator
         ref={navigatorRef}
-        initialRoute={{view: currentView }}
+        initialRoute={{view: currentView}}
         renderScene={this._renderScene.bind(this)}
       />
     )
@@ -47,25 +48,16 @@ class RNNavigatorDemo extends Component {
     // debugger;
     switch (route.view){
       case 'search':
-        return <RefreshList navigator={navigator} />
+        return <Search navigator={navigator} />
       break;
       case 'contacts':
         return <Contacts navigator={navigator} />
       break;
+      case 'sample':
+        return <Sample navigator={navigator} />
+      break;
     }
   }
-
-  // _renderContent(_color: string, pageText: string){
-  //   return (
-  //     <View style={styles.container}>
-  //       <Text style={styles.tabText}>{pageText}</Text>
-  //       <Text style={styles.tabText}> need to login to view more</Text>
-  //       <TouchableHighlight style={[styles.button,{backgroundColor:_color}]} onPress={() => this.props.navigator.push({id: 'test'})}>
-  //         <Text>Login</Text>
-  //       </TouchableHighlight>
-  //     </View>
-  //   )
-  // }
 
   render() {
     return (

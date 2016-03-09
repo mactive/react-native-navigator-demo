@@ -21,7 +21,7 @@ const {
 } = Dimensions.get('window')
 
 
-class Profile extends Component {
+class Contacts extends Component {
   // 构造
   constructor(props) {
     super(props);
@@ -33,7 +33,7 @@ class Profile extends Component {
     return(
       <View style={styles.container}>
         <Text style={styles.title}>
-          Profile View
+          Contacts View
         </Text>
       </View>
     );
@@ -55,4 +55,4 @@ const styles = StyleSheet.create({
   }
 })
 
-module.exports = Profile;
+module.exports = Contacts;
