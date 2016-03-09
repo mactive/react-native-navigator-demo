@@ -39,7 +39,7 @@ class Sample extends Component {
   }
 
   _onPresent(event){
-
+    this.props.navigator.push({view:'sample', modalType:'present'});
   }
 
   render(){

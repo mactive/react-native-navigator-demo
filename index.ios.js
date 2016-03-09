@@ -40,6 +40,7 @@ class RNNavigatorDemo extends Component {
         ref={navigatorRef}
         initialRoute={{view: currentView}}
         renderScene={this._renderScene.bind(this)}
+        configureScene={this._configureScene.bind(this)}
       />
     )
   }
@@ -56,6 +57,14 @@ class RNNavigatorDemo extends Component {
       case 'sample':
         return <Sample navigator={navigator} />
       break;
+    }
+  }
+
+  _configureScene(route, routeStack){
+    if(route.modalType === 'present'){
+      return Navigator.SceneConfigs.FloatFromBottom;
+    }else{
+      return Navigator.SceneConfigs.FloatFromRight;
     }
   }
 
