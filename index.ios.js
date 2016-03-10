@@ -8,6 +8,7 @@ import Contacts from './app/views/Contacts'
 import Search from './app/views/Search'
 import Login from './app/views/Login'
 import Sample from './app/views/Sample'
+import Replace from './app/views/Replace'
 
 const {
   AppRegistry,
@@ -32,11 +33,20 @@ class RNNavigatorDemo extends Component {
     };
   }
 
+
+  /**
+   * 初始化的时候就会调用, 像这个tabbar 就有两个 <Navigator />
+   * @param view
+   * @returns {XML}
+   * @private
+   */
   _renderNavigatorView(view){
-    let currentView = view || this.state.selectedTab
-    let navigatorRef = currentView  + 'Ref'
+    let currentView = view || this.state.selectedTab;
+    let navigatorRef = currentView  + 'Ref';
+    console.log('refs==',this.refs);
     return (
       <Navigator
+        // ref={this._setNavigatorRef.bind(this)}
         ref={navigatorRef}
         initialRoute={{view: currentView}}
         renderScene={this._renderScene.bind(this)}
@@ -45,8 +55,21 @@ class RNNavigatorDemo extends Component {
     )
   }
 
+  _setNavigatorRef(navigator){
+    console.log('navigator', navigator);
+  }
+
+  /**
+   * 这里是需要渲染的时候到才会调用
+   * @param route
+   * @param navigator
+   * @returns {XML}
+   * @private
+   */
   _renderScene(route, navigator){
     // debugger;
+    console.log('route ==',route);
+    console.log('navigator ==',navigator.getCurrentRoutes());
     switch (route.view){
       case 'search':
         return <Search navigator={navigator} />
@@ -57,6 +80,9 @@ class RNNavigatorDemo extends Component {
       case 'sample':
         return <Sample navigator={navigator} />
       break;
+      case 'replace':
+        return <Replace navigator={navigator} />
+        break;
     }
   }
 

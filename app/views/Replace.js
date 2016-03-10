@@ -22,7 +22,7 @@ const {
 } = Dimensions.get('window')
 
 
-class Sample extends Component {
+class Replace extends Component {
   // 构造
   constructor(props) {
     super(props);
@@ -38,31 +38,23 @@ class Sample extends Component {
     this.props.navigator.push({view:'sample'});
   }
 
-  _onPresent(event){
-    this.props.navigator.push({view:'sample', modalType:'present'});
-  }
-
   _onReplace(event){
     this.props.navigator.replace({view:'replace'});
   }
-  
+
   render(){
     return(
       <View style={styles.container}>
-        <NavBar info={{title:'Sample', back: {onPress:this._backPress.bind(this)}}}></NavBar>
+        <NavBar info={{title:'Replace', back: {onPress:this._backPress.bind(this)}}}></NavBar>
         <Text style={styles.title}>
           navigator route depth:
           {this.props.navigator.getCurrentRoutes().length}
         </Text>
 
         <TouchableOpacity style={styles.button} onPress={this._onPush.bind(this)}>
-          <Text style={styles.buttonText}>Push</Text>
+          <Text style={styles.buttonText}>Push SampleView</Text>
         </TouchableOpacity>
 
-
-        <TouchableOpacity style={styles.button}  onPress={this._onPresent.bind(this)}>
-          <Text style={styles.buttonText}>Present</Text>
-        </TouchableOpacity>
 
         <TouchableOpacity style={styles.button}  onPress={this._onReplace.bind(this)}>
           <Text style={styles.buttonText}>Replace ReplaceView</Text>
@@ -91,7 +83,7 @@ const styles = StyleSheet.create({
     width: width-40,
     height: 40,
     margin: 20,
-    backgroundColor: '#42A5F5',
+    backgroundColor: '#4DB6AC',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center'
@@ -101,4 +93,4 @@ const styles = StyleSheet.create({
   }
 })
 
-module.exports = Sample;
+module.exports = Replace;
