@@ -8,6 +8,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
+    "@remobile/react-native-refresh-infinite-listview": "^1.0.3",
     "react-native": "^0.21.0"
   }
 }
