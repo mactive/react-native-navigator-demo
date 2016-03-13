@@ -3,30 +3,133 @@
  * https://github.com/facebook/react-native
  */
 'use strict';
-import React, {
+import React from 'react-native'
+import Contacts from './app/views/Contacts'
+import Search from './app/views/Search'
+import Login from './app/views/Login'
+import Sample from './app/views/Sample'
+import Replace from './app/views/Replace'
+import RefreshListView from './app/views/RefreshListView'
+
+const {
   AppRegistry,
   Component,
   StyleSheet,
   Text,
-  View
-} from 'react-native';
+  View,
+  Navigator,
+  Platform,
+  TabBarIOS,
+  TouchableHighlight
+} = React;
 
 class RNNavigatorDemo extends Component {
-  render() {
+  // 构造
+  constructor(props) {
+    super(props);
+    // 初始状态
+    this.state = {
+      selectedTab: 'search',
+      notifCount: 2,
+    };
+  }
+
+
+  /**
+   * 初始化的时候就会调用, 像这个tabbar 就有两个 <Navigator />
+   * @param view
+   * @returns {XML}
+   * @private
+   */
+  _renderNavigatorView(view){
+    let currentView = view || this.state.selectedTab;
+    let navigatorRef = currentView  + 'Ref';
+    console.log('refs==',this.refs);
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
+      <Navigator
+        // ref={this._setNavigatorRef.bind(this)}
+        ref={navigatorRef}
+        initialRoute={{view: currentView}}
+        renderScene={this._renderScene.bind(this)}
+        configureScene={this._configureScene.bind(this)}
+      />
+    )
+  }
+
+  _setNavigatorRef(navigator){
+    console.log('navigator', navigator);
+  }
+
+  /**
+   * 这里是需要渲染的时候到才会调用
+   * @param route
+   * @param navigator
+   * @returns {XML}
+   * @private
+   */
+  _renderScene(route, navigator){
+    // debugger;
+    console.log('route ==',route);
+    console.log('navigator ==',navigator.getCurrentRoutes());
+    switch (route.view){
+      case 'search':
+        return <Search navigator={navigator} />
+      break;
+      case 'contacts':
+        return <Contacts navigator={navigator} />
+      break;
+      case 'sample':
+        return <Sample navigator={navigator} />
+      break;
+      case 'replace':
+        return <Replace navigator={navigator} />
+        break;
+    }
+  }
+
+  _configureScene(route, routeStack){
+    if(route.modalType === 'present'){
+      return Navigator.SceneConfigs.FloatFromBottom;
+    }else{
+      return Navigator.SceneConfigs.FloatFromRight;
+    }
+  }
+
+  render() {
+    return(
+      <RefreshListView ></RefreshListView>
+    )
+
+    // return (
+    //   <TabBarIOS
+    //     tintColor="white"
+    //     barTintColor="#1565C0">
+    //     <TabBarIOS.Item
+    //       title="List"
+    //       systemIcon="search"
+    //       selected={this.state.selectedTab === 'search'}
+    //       onPress={() => {
+    //         this.setState({
+    //           selectedTab: 'search',
+    //         });
+    //       }}>
+    //       {this._renderNavigatorView('search')}
+    //     </TabBarIOS.Item>
+    //     <TabBarIOS.Item
+    //       systemIcon="contacts"
+    //       badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
+    //       selected={this.state.selectedTab === 'contacts'}
+    //       title='contacts'
+    //       onPress={() => {
+    //         this.setState({
+    //           selectedTab: 'contacts',
+    //           notifCount: this.state.notifCount + 1,
+    //         });
+    //       }}>
+    //       {this._renderNavigatorView('contacts')}
+    //     </TabBarIOS.Item>
+    //   </TabBarIOS>
+    // );
   }
 }
 
@@ -44,9 +147,14 @@ const styles = StyleSheet.create({
   },
   instructions: {
     textAlign: 'center',
-    color: '#333333',
+    color: '#000000',
     marginBottom: 5,
   },
+  button: {
+    backgroundColor: 'red',
+    padding: 10,
+    margin: 20
+  }
 });
 
 AppRegistry.registerComponent('RNNavigatorDemo', () => RNNavigatorDemo);
