@@ -89,15 +89,26 @@ class Sample extends Component {
   _onReplace(event){
     this.props.navigator.replace({view:'replace'});
   }
+
+
+  _onReplaceParent(event){
+    this.props.navigator.replacePrevious({view:'replace'});
+  }
   
   render(){
     console.log('#_Render', this.depth);
     return(
       <View style={styles.container}>
         <NavBar info={{title:'Sample', back: {onPress:this._backPress.bind(this)}}}></NavBar>
+
         <Text style={styles.title}>
           navigator route ID:
           {this.route.__navigatorRouteID}
+        </Text>
+
+        <Text style={styles.title}>
+          navigator route depth:
+          {this.props.navigator.getCurrentRoutes().length}
         </Text>
 
         <TouchableOpacity style={styles.button} onPress={this._onPush.bind(this)}>
@@ -109,8 +120,14 @@ class Sample extends Component {
           <Text style={styles.buttonText}>Present</Text>
         </TouchableOpacity>
 
+
+        <TouchableOpacity style={styles.button}  onPress={this._onReplaceParent.bind(this)}>
+          <Text style={styles.buttonText}>  Replace ParentView</Text>
+        </TouchableOpacity>
+
+
         <TouchableOpacity style={styles.button}  onPress={this._onReplace.bind(this)}>
-          <Text style={styles.buttonText}>Replace ReplaceView</Text>
+          <Text style={styles.buttonText}>Replace CurrentView</Text>
         </TouchableOpacity>
 
       </View>
@@ -127,7 +144,7 @@ const styles = StyleSheet.create({
   },
   title:{
     fontSize: 20,
-    height:80,
+    height:20,
     width: width-40,
     textAlign: 'center',
     margin: 20,
