@@ -9,6 +9,7 @@ const {
   Text,
   TouchableWithoutFeedback,
   View,
+  NativeAppEventEmitter
 } = React;
 
 const styles = StyleSheet.create({
@@ -61,6 +62,7 @@ class Row extends React.Component {
 
 class RefreshControlExample extends React.Component {
 
+
 // 构造
   constructor(props) {
     super(props);
@@ -71,6 +73,10 @@ class RefreshControlExample extends React.Component {
       rowData: Array.from(new Array(20)).map(
         (val, i) => ({text: 'Initial row ' + i, clicks: 0})),
     };
+  }
+
+  componentWillUnmount() {
+    subscription && subscription.remove();
   }
 
   _onClick(row) {

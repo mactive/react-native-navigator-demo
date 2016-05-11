@@ -20,7 +20,7 @@ const {
   Navigator,
   Platform,
   TabBarIOS,
-  TouchableHighlight
+  TouchableHighlight,
 } = React;
 
 class RNNavigatorDemo extends Component {
