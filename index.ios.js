@@ -81,16 +81,16 @@ class RNNavigatorDemo extends Component {
 
     switch (route.view){
       case 'search':
-        return <Search navigator={navigator} />
+        return <Search route={route} navigator={navigator} />
       break;
       case 'contacts':
-        return <Contacts navigator={navigator} />
+        return <Contacts route={route} navigator={navigator} />
       break;
       case 'sample':
-        return <Sample navigator={navigator} />
+        return <Sample route={route} navigator={navigator} />
       break;
       case 'replace':
-        return <Replace navigator={navigator} />
+        return <Replace route={route} navigator={navigator} />
         break;
     }
   }

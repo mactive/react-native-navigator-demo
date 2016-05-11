@@ -29,42 +29,43 @@ class Replace extends Component {
     super(props);
     // 初始状态
     this.state = {};
-    this.route = _.last(this.props.navigator.getCurrentRoutes());
-    this.depth =  this.route;
+    this.route = this.props.route;
+    this.depth =  this.props.navigator.getCurrentRoutes().length;
+
   }
 
 
   /** == life cycle start == **/
 
   componentWillReceiveProps(nextProps) {
-    console.log('#_WillReceiveProps',this.depth,nextProps);
+    console.log('#_WillReceiveProps',this.route,nextProps);
   }
 
   componentWillMount() {
-    console.log('#_WillMount',this.depth);
+    console.log('#_WillMount',this.route);
   }
 
 
   // shouldComponentUpdate(nextProps, nextState) {
-  //   console.log('#_ShouldUpdate',this.depth,nextProps,nextState);
+  //   console.log('#_ShouldUpdate',this.route,nextProps,nextState);
   //   return nextProps.id !== this.props.id;
   // }
 
 
   componentWillUpdate(prevProps,prevState) {
-    console.log('#_WillUpdate',this.depth,this.props.navigator.getCurrentRoutes(),prevProps,prevState);
+    console.log('#_WillUpdate',this.route,this.props.navigator.getCurrentRoutes(),prevProps,prevState);
   }
 
   componentDidUpdate(prevProps,prevState) {
-    console.log('#_DidUpdate',this.depth,prevProps,prevState);
+    console.log('#_DidUpdate',this.route,prevProps,prevState);
   }
 
   componentDidMount() {
-    console.log('#_DidMount',this.depth);
+    console.log('#_DidMount',this.route);
   }
 
   componentWillUnmount(){
-    console.log('#_WillUnmount', this.depth, this.props.navigator.getCurrentRoutes());
+    console.log('#_WillUnmount', this.route, this.props.navigator.getCurrentRoutes());
   }
 
   /** == life cycle end == **/
@@ -83,7 +84,7 @@ class Replace extends Component {
   }
 
   render(){
-    console.log('#_Render', this.depth);
+    console.log('#_Render', this.route);
 
     return(
       <View style={styles.container}>
@@ -121,10 +122,10 @@ const styles = StyleSheet.create({
   },
   title:{
     fontSize: 20,
-    height:20,
+    height:30,
     width: width-40,
     textAlign: 'center',
-    margin: 20,
+    margin: 15,
   },
   button:{
     width: width-40,
