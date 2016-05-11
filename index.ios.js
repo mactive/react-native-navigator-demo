@@ -10,6 +10,7 @@ import Login from './app/views/Login'
 import Sample from './app/views/Sample'
 import Replace from './app/views/Replace'
 // import RefreshListView from './app/views/RefreshListView'
+import _ from 'lodash'
 
 const {
   AppRegistry,
@@ -29,7 +30,7 @@ class RNNavigatorDemo extends Component {
     super(props);
     // 初始状态
     this.state = {
-      selectedTab: 'search',
+      selectedTab: 'sample',
       notifCount: 2,
     };
   }
@@ -71,6 +72,13 @@ class RNNavigatorDemo extends Component {
     // debugger;
     console.log('route ==',route);
     console.log('navigator ==',navigator.getCurrentRoutes());
+
+    // avoid the route call twice
+    // const lastRoute =  _.last(navigator.getCurrentRoutes());
+    // if(lastRoute.__navigatorRouteID !== route.__navigatorRouteID){
+    //   return;
+    // }
+
     switch (route.view){
       case 'search':
         return <Search navigator={navigator} />
@@ -107,13 +115,13 @@ class RNNavigatorDemo extends Component {
         <TabBarIOS.Item
           title="List"
           systemIcon="search"
-          selected={this.state.selectedTab === 'search'}
+          selected={this.state.selectedTab === 'sample'}
           onPress={() => {
             this.setState({
-              selectedTab: 'search',
+              selectedTab: 'sample',
             });
           }}>
-          {this._renderNavigatorView('search')}
+          {this._renderNavigatorView('sample')}
         </TabBarIOS.Item>
         <TabBarIOS.Item
           systemIcon="contacts"

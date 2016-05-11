@@ -6,6 +6,7 @@
 'use strict';
 import React from 'react-native'
 import NavBar from '../components/NavBar'
+import _ from 'lodash'
 
 const {
   TouchableOpacity,
@@ -28,7 +29,50 @@ class Sample extends Component {
     super(props);
     // 初始状态
     this.state = {};
+    // this.depth = _.cloneDeep(this.props.navigator.getCurrentRoutes().length);
+    this.route = _.last(this.props.navigator.getCurrentRoutes());
+    this.depth =  this.route;
   }
+
+  /** == life cycle start == **/
+
+  componentWillReceiveProps(nextProps) {
+    console.log('#_WillReceiveProps',this.depth,nextProps);
+  }
+
+  componentWillMount() {
+    console.log('#_WillMount',this.depth);
+  }
+
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('#_ShouldUpdate',this.depth,nextProps,nextState);
+  //   return nextProps.id !== this.props.id;
+  // }
+
+
+
+  componentWillUpdate(prevProps,prevState) {
+    console.log('#_WillUpdate',this.depth,this.props.navigator.getCurrentRoutes(),prevProps,prevState);
+  }
+
+  componentDidUpdate(prevProps,prevState) {
+    console.log('#_DidUpdate',this.depth,prevProps,prevState);
+  }
+
+  componentDidMount() {
+    console.log('#_DidMount',this.depth);
+  }
+
+  componentWillUnmount(){
+    console.log('#_WillUnmount', this.depth, this.props.navigator.getCurrentRoutes());
+  }
+
+  /** == life cycle end == **/
+
+
+
+
 
   _backPress(event) {
     this.props.navigator.pop()
@@ -47,12 +91,13 @@ class Sample extends Component {
   }
   
   render(){
+    console.log('#_Render', this.depth);
     return(
       <View style={styles.container}>
         <NavBar info={{title:'Sample', back: {onPress:this._backPress.bind(this)}}}></NavBar>
         <Text style={styles.title}>
-          navigator route depth:
-          {this.props.navigator.getCurrentRoutes().length}
+          navigator route ID:
+          {this.route.__navigatorRouteID}
         </Text>
 
         <TouchableOpacity style={styles.button} onPress={this._onPush.bind(this)}>
