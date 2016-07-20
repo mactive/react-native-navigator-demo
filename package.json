@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@remobile/react-native-refresh-infinite-listview": "^1.0.3",
-    "react-native": "^0.21.0"
+    "react": "^15.2.1",
+    "react-native": "^0.28.0"
   }
 }
