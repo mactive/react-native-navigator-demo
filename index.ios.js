@@ -111,7 +111,6 @@ class RNNavigatorDemo extends Component {
         <TabBarIOS.Item
           title="List"
           systemIcon="search"
-<<<<<<< HEAD
           selected={this.state.selectedTab === 'search'}
           onPress={() => {
             this.setState({
@@ -119,15 +118,6 @@ class RNNavigatorDemo extends Component {
             });
           }}>
           {this._renderNavigatorView('search')}
-=======
-          selected={this.state.selectedTab === 'sample'}
-          onPress={() => {
-            this.setState({
-              selectedTab: 'sample',
-            });
-          }}>
-          {this._renderNavigatorView('sample')}
->>>>>>> 4e46fa932dc7980fc75def0b4ad6392453197683
         </TabBarIOS.Item>
         <TabBarIOS.Item
           systemIcon="contacts"

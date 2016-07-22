@@ -3,12 +3,14 @@ import React, { Component } from 'react';
 import NavBar from '../components/NavBar'
 import _ from 'lodash'
 
-import {ScrollView,
-StyleSheet,
-RefreshControl,
-Text,
-TouchableWithoutFeedback,
-View,} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  RefreshControl,
+  Text,
+  TouchableWithoutFeedback,
+  View
+} from 'react-native';
 
 const styles = StyleSheet.create({
   row: {

@@ -86,9 +86,6 @@ class Sample extends Component {
     this.props.navigator.replace({view:'replace'});
   }
 
-<<<<<<< HEAD
-=======
-
   _onReplaceParent(event){
     this.props.navigator.replacePrevious({view:'replace'});
   }
@@ -97,8 +94,7 @@ class Sample extends Component {
     console.log('#_onReplaceAtIndex',index);
     this.props.navigator.replaceAtIndex({view:'replace'},index);
   }
-  
->>>>>>> 4e46fa932dc7980fc75def0b4ad6392453197683
+
   render(){
     console.log('#_Render', this.route);
     const grandIndex = this.depth -2 -1;
