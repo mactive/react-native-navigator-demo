@@ -1,6 +1,7 @@
 'use strict';
 import React, { Component } from 'react';
 import NavBar from '../components/NavBar'
+import _ from 'lodash'
 
 import {ScrollView,
 StyleSheet,
@@ -59,6 +60,7 @@ class Row extends React.Component {
 
 class RefreshControlExample extends React.Component {
 
+
 // 构造
   constructor(props) {
     super(props);
@@ -69,11 +71,50 @@ class RefreshControlExample extends React.Component {
       rowData: Array.from(new Array(20)).map(
         (val, i) => ({text: 'Initial row ' + i, clicks: 0})),
     };
+    this.depth = _.last(this.props.navigator.getCurrentRoutes());
+
   }
+
+  /** == life cycle start == **/
+
+  componentWillReceiveProps(nextProps) {
+    console.log('#_WillReceiveProps',this.depth,nextProps);
+  }
+
+  componentWillMount() {
+    console.log('#_WillMount',this.depth);
+  }
+
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('#_ShouldUpdate',this.depth,nextProps,nextState);
+  //   return nextProps.id !== this.props.id;
+  // }
+
+
+
+  componentWillUpdate(nextProps,nextState) {
+    console.log('#_WillUpdate',this.depth,nextProps,nextState);
+  }
+
+  componentDidUpdate(prevProps,prevState) {
+    console.log('#_DidUpdate',this.depth,prevProps,prevState);
+  }
+
+  componentDidMount() {
+    console.log('#_DidMount',this.depth);
+  }
+
+  componentWillUnmount(){
+    console.log('#_WillUnmount', this.depth, this.props.navigator.getCurrentRoutes());
+  }
+
+  /** == life cycle end == **/
 
   _onClick(row) {
     row.clicks++;
     this.setState({
+      clicked: row.text,
       rowData: this.state.rowData,
     });
 
@@ -81,6 +122,8 @@ class RefreshControlExample extends React.Component {
   }
 
   render() {
+    console.log('#_Render', this.depth);
+
     const rows = this.state.rowData.map((row, ii) => {
       return <Row key={ii} data={row} onClick={this._onClick.bind(this)}/>;
     });

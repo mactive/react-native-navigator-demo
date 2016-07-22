@@ -12,5 +12,6 @@
     "react": "^15.2.1",
     "react-native": "^0.28.0",
     "react-native-refresher": "^0.1.1"
+    "react-native-router-flux": "^3.22.23"
   }
 }

@@ -18,7 +18,7 @@ import Login from './app/views/Login'
 import Sample from './app/views/Sample'
 import Replace from './app/views/Replace'
 // import RefreshListView from './app/views/RefreshListView'
-
+import _ from 'lodash'
 
 class RNNavigatorDemo extends Component {
   // 构造
@@ -26,7 +26,7 @@ class RNNavigatorDemo extends Component {
     super(props);
     // 初始状态
     this.state = {
-      selectedTab: 'search',
+      selectedTab: 'sample',
       notifCount: 2,
     };
   }
@@ -68,18 +68,25 @@ class RNNavigatorDemo extends Component {
     // debugger;
     console.log('route ==',route);
     console.log('navigator ==',navigator.getCurrentRoutes());
+
+    // avoid the route call twice
+    // const lastRoute =  _.last(navigator.getCurrentRoutes());
+    // if(lastRoute.__navigatorRouteID !== route.__navigatorRouteID){
+    //   return;
+    // }
+
     switch (route.view){
       case 'search':
-        return <Search navigator={navigator} />
+        return <Search route={route} navigator={navigator} />
       break;
       case 'contacts':
-        return <Contacts navigator={navigator} />
+        return <Contacts route={route} navigator={navigator} />
       break;
       case 'sample':
-        return <Sample navigator={navigator} />
+        return <Sample route={route} navigator={navigator} />
       break;
       case 'replace':
-        return <Replace navigator={navigator} />
+        return <Replace route={route} navigator={navigator} />
         break;
     }
   }
@@ -104,6 +111,7 @@ class RNNavigatorDemo extends Component {
         <TabBarIOS.Item
           title="List"
           systemIcon="search"
+<<<<<<< HEAD
           selected={this.state.selectedTab === 'search'}
           onPress={() => {
             this.setState({
@@ -111,6 +119,15 @@ class RNNavigatorDemo extends Component {
             });
           }}>
           {this._renderNavigatorView('search')}
+=======
+          selected={this.state.selectedTab === 'sample'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 'sample',
+            });
+          }}>
+          {this._renderNavigatorView('sample')}
+>>>>>>> 4e46fa932dc7980fc75def0b4ad6392453197683
         </TabBarIOS.Item>
         <TabBarIOS.Item
           systemIcon="contacts"

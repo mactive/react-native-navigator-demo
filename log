@@ -1,0 +1,23 @@
+#_WillReceiveProps 1 Object {navigator: Constructor}
+#_WillUpdate 1 Object {navigator: Constructor} Object {}
+#_WillMount 2
+#_DidUpdate 1 Object {navigator: Constructor} Object {}
+#_DidMount 2
+
+
+
+#_WillReceiveProps 1 Object {navigator: Constructor}
+#_ShouldUpdate 1 Object {navigator: Constructor} Object {}
+#_WillMount 2
+#_DidMount 2
+
+
+when navigator push when _renderScene call twice
+每次push 当前和下一个的 route 都会进入 _renderScene
+所以会调用上一级的 三个方法  WillReceiveProps, willUpdate, DidUpdate
+
+
+
+
+
+pop 的时候就只会走 上一个的 route, 不会再走当前的 route
