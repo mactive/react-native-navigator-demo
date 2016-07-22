@@ -4,16 +4,12 @@
  */
 
 'use strict';
-import React from 'react-native'
-
-const {
-  AppRegistry,
-  Component,
-  StyleSheet,
-  Text,
-  View,
-  Dimensions
-} = React;
+import React, { Component } from 'react';
+import {AppRegistry,
+StyleSheet,
+Text,
+View,
+Dimensions} from 'react-native';
 
 const {
   width,
@@ -26,7 +22,7 @@ class Login extends Component {
   // 构造
   constructor(props) {
     super(props);
-    // 初始状态 
+    // 初始状态
     this.state = {};
   }
 

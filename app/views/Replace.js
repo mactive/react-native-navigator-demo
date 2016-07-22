@@ -4,17 +4,15 @@
  */
 
 'use strict';
-import React from 'react-native'
-import NavBar from '../components/NavBar'
+import React, { Component } from 'react';
 
-const {
-  TouchableOpacity,
-  Component,
-  StyleSheet,
-  Text,
-  View,
-  Dimensions
-} = React;
+import NavBar from '../components/NavBar'
+import {AppRegistry,  TouchableOpacity,
+StyleSheet,
+Text,
+View,
+Dimensions} from 'react-native';
+
 
 const {
   width,

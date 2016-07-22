@@ -1,15 +1,13 @@
 'use strict';
-import React from 'react-native'
+import React, { Component } from 'react';
 import NavBar from '../components/NavBar'
 
-const {
-  ScrollView,
-  StyleSheet,
-  RefreshControl,
-  Text,
-  TouchableWithoutFeedback,
-  View,
-} = React;
+import {ScrollView,
+StyleSheet,
+RefreshControl,
+Text,
+TouchableWithoutFeedback,
+View,} from 'react-native';
 
 const styles = StyleSheet.create({
   row: {

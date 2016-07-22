@@ -3,25 +3,22 @@
  * https://github.com/facebook/react-native
  */
 'use strict';
-import React from 'react-native'
+import React, { Component } from 'react';
+import { AppRegistry,
+StyleSheet,
+Text,
+View,
+Navigator,
+Platform,
+TabBarIOS,
+TouchableHighlight } from 'react-native';
 import Contacts from './app/views/Contacts'
 import Search from './app/views/Search'
 import Login from './app/views/Login'
 import Sample from './app/views/Sample'
 import Replace from './app/views/Replace'
-import RefreshListView from './app/views/RefreshListView'
+// import RefreshListView from './app/views/RefreshListView'
 
-const {
-  AppRegistry,
-  Component,
-  StyleSheet,
-  Text,
-  View,
-  Navigator,
-  Platform,
-  TabBarIOS,
-  TouchableHighlight
-} = React;
 
 class RNNavigatorDemo extends Component {
   // 构造
@@ -96,40 +93,40 @@ class RNNavigatorDemo extends Component {
   }
 
   render() {
-    return(
-      <RefreshListView ></RefreshListView>
-    )
+    // return(
+    //   <RefreshListView ></RefreshListView>
+    // )
 
-    // return (
-    //   <TabBarIOS
-    //     tintColor="white"
-    //     barTintColor="#1565C0">
-    //     <TabBarIOS.Item
-    //       title="List"
-    //       systemIcon="search"
-    //       selected={this.state.selectedTab === 'search'}
-    //       onPress={() => {
-    //         this.setState({
-    //           selectedTab: 'search',
-    //         });
-    //       }}>
-    //       {this._renderNavigatorView('search')}
-    //     </TabBarIOS.Item>
-    //     <TabBarIOS.Item
-    //       systemIcon="contacts"
-    //       badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
-    //       selected={this.state.selectedTab === 'contacts'}
-    //       title='contacts'
-    //       onPress={() => {
-    //         this.setState({
-    //           selectedTab: 'contacts',
-    //           notifCount: this.state.notifCount + 1,
-    //         });
-    //       }}>
-    //       {this._renderNavigatorView('contacts')}
-    //     </TabBarIOS.Item>
-    //   </TabBarIOS>
-    // );
+    return (
+      <TabBarIOS
+        tintColor="white"
+        barTintColor="#1565C0">
+        <TabBarIOS.Item
+          title="List"
+          systemIcon="search"
+          selected={this.state.selectedTab === 'search'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 'search',
+            });
+          }}>
+          {this._renderNavigatorView('search')}
+        </TabBarIOS.Item>
+        <TabBarIOS.Item
+          systemIcon="contacts"
+          badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
+          selected={this.state.selectedTab === 'contacts'}
+          title='contacts'
+          onPress={() => {
+            this.setState({
+              selectedTab: 'contacts',
+              notifCount: this.state.notifCount + 1,
+            });
+          }}>
+          {this._renderNavigatorView('contacts')}
+        </TabBarIOS.Item>
+      </TabBarIOS>
+    );
   }
 }
 

@@ -1,14 +1,13 @@
-import React from 'react-native'
-// import Icon from 'react-native-vector-icons/MaterialIcons'
-
-const {
+import React, { Component } from 'react';
+import {
   TouchableOpacity,
-  Component,
   View,
   Text,
   Platform,
   StyleSheet
-} = React;
+} from 'react-native'
+
+// import Icon from 'react-native-vector-icons/MaterialIcons'
 
 const NAV_BAR_HEIGHT = 44
 const STATUS_BAR_HEIGHT = 20

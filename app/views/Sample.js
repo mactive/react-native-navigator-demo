@@ -4,17 +4,13 @@
  */
 
 'use strict';
-import React from 'react-native'
+import React, { Component } from 'react';
 import NavBar from '../components/NavBar'
-
-const {
-  TouchableOpacity,
-  Component,
-  StyleSheet,
-  Text,
-  View,
-  Dimensions
-} = React;
+import {AppRegistry,  TouchableOpacity,
+StyleSheet,
+Text,
+View,
+Dimensions} from 'react-native';
 
 const {
   width,
@@ -45,7 +41,7 @@ class Sample extends Component {
   _onReplace(event){
     this.props.navigator.replace({view:'replace'});
   }
-  
+
   render(){
     return(
       <View style={styles.container}>

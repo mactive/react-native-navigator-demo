@@ -4,15 +4,8 @@
  */
 
 'use strict';
-import React from 'react-native'
-
-const {
-  Component,
-  StyleSheet,
-  Text,
-  View,
-  Dimensions
-} = React;
+import React, { Component } from 'react';
+import {StyleSheet,Text,View,Dimensions} from 'react-native';
 
 const {
   width,
