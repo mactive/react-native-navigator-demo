@@ -80,35 +80,28 @@ class RefreshControlExample extends React.Component {
   /** == life cycle start == **/
 
   componentWillReceiveProps(nextProps) {
-    console.log('#_WillReceiveProps',this.depth,nextProps);
+    // console.log('#_WillReceiveProps',this.depth,nextProps);
   }
 
   componentWillMount() {
-    console.log('#_WillMount',this.depth);
+    // console.log('#_WillMount',this.depth);
   }
-
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   console.log('#_ShouldUpdate',this.depth,nextProps,nextState);
-  //   return nextProps.id !== this.props.id;
-  // }
-
 
 
   componentWillUpdate(nextProps,nextState) {
-    console.log('#_WillUpdate',this.depth,nextProps,nextState);
+    // console.log('#_WillUpdate',this.depth,nextProps,nextState);
   }
 
   componentDidUpdate(prevProps,prevState) {
-    console.log('#_DidUpdate',this.depth,prevProps,prevState);
+    // console.log('#_DidUpdate',this.depth,prevProps,prevState);
   }
 
   componentDidMount() {
-    console.log('#_DidMount',this.depth);
+    // console.log('#_DidMount',this.depth);
   }
 
   componentWillUnmount(){
-    console.log('#_WillUnmount', this.depth, this.props.navigator.getCurrentRoutes());
+    // console.log('#_WillUnmount', this.depth, this.props.navigator.getCurrentRoutes());
   }
 
   /** == life cycle end == **/
@@ -124,7 +117,7 @@ class RefreshControlExample extends React.Component {
   }
 
   render() {
-    console.log('#_Render', this.depth);
+    // console.log('#_Render', this.depth);
 
     const rows = this.state.rowData.map((row, ii) => {
       return <Row key={ii} data={row} onClick={this._onClick.bind(this)}/>;

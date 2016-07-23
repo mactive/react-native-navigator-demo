@@ -41,7 +41,7 @@ class RNNavigatorDemo extends Component {
   _renderNavigatorView(view){
     let currentView = view || this.state.selectedTab;
     let navigatorRef = currentView  + 'Ref';
-    console.log('refs==',this.refs);
+    // console.log('refs==',this.refs);
     return (
       <Navigator
         // ref={this._setNavigatorRef.bind(this)}
@@ -54,7 +54,7 @@ class RNNavigatorDemo extends Component {
   }
 
   _setNavigatorRef(navigator){
-    console.log('navigator', navigator);
+    // console.log('navigator', navigator);
   }
 
   /**
@@ -66,8 +66,8 @@ class RNNavigatorDemo extends Component {
    */
   _renderScene(route, navigator){
     // debugger;
-    console.log('route ==',route);
-    console.log('navigator ==',navigator.getCurrentRoutes());
+    // console.log('route ==',route);
+    // console.log('navigator ==',navigator.getCurrentRoutes());
 
     // avoid the route call twice
     // const lastRoute =  _.last(navigator.getCurrentRoutes());

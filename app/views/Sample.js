@@ -33,11 +33,11 @@ class Sample extends Component {
   /** == life cycle start == **/
 
   componentWillReceiveProps(nextProps) {
-    console.log('#_WillReceiveProps',this.route,nextProps);
+    // console.log('#_WillReceiveProps',this.route,nextProps);
   }
 
   componentWillMount() {
-    console.log('#_WillMount',this.route);
+    // console.log('#_WillMount',this.route);
   }
 
 
@@ -49,19 +49,19 @@ class Sample extends Component {
 
 
   componentWillUpdate(prevProps,prevState) {
-    console.log('#_WillUpdate',this.route,this.props.navigator.getCurrentRoutes(),prevProps,prevState);
+    // console.log('#_WillUpdate',this.route,this.props.navigator.getCurrentRoutes(),prevProps,prevState);
   }
 
   componentDidUpdate(prevProps,prevState) {
-    console.log('#_DidUpdate',this.route,prevProps,prevState);
+    // console.log('#_DidUpdate',this.route,prevProps,prevState);
   }
 
   componentDidMount() {
-    console.log('#_DidMount',this.route);
+    // console.log('#_DidMount',this.route);
   }
 
   componentWillUnmount(){
-    console.log('#_WillUnmount', this.route, this.props.navigator.getCurrentRoutes());
+    // console.log('#_WillUnmount', this.route, this.props.navigator.getCurrentRoutes());
   }
 
   /** == life cycle end == **/
@@ -91,12 +91,12 @@ class Sample extends Component {
   }
 
   _onReplaceAtIndex(index){
-    console.log('#_onReplaceAtIndex',index);
+    // console.log('#_onReplaceAtIndex',index);
     this.props.navigator.replaceAtIndex({view:'replace'},index);
   }
 
   render(){
-    console.log('#_Render', this.route);
+    // console.log('#_Render', this.route);
     const grandIndex = this.depth -2 -1;
     return(
       <View style={styles.container}>

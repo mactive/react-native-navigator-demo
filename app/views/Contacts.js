@@ -5,7 +5,16 @@
 
 'use strict';
 import React, { Component } from 'react';
-import {StyleSheet,Text,View,Dimensions} from 'react-native';
+
+import RNActionView from '../components/RNActionView'
+
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  TouchableOpacity
+} from 'react-native'
 
 const {
   width,
@@ -21,12 +30,22 @@ class Contacts extends Component {
     this.state = {};
   }
 
+  onAction(){
+    RNActionView.showActionView((response)=>{
+      console.log(response);
+    })
+  }
+
   render(){
     return(
       <View style={styles.container}>
         <Text style={styles.title}>
           Contacts View
         </Text>
+
+        <TouchableOpacity  onPress={this.onAction.bind(this)}>
+          <Text style={styles.title}>ActionView</Text>
+        </TouchableOpacity>
       </View>
     );
   }
