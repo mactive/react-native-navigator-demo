@@ -13,7 +13,8 @@ import {
   Text,
   View,
   Dimensions,
-  TouchableOpacity
+  TouchableOpacity,
+  TextInput
 } from 'react-native'
 
 const {
@@ -36,12 +37,25 @@ class Contacts extends Component {
     })
   }
 
+  onActionB(){
+    console.log('ddd');
+  }
+
   render(){
     return(
       <View style={styles.container}>
+        <TouchableOpacity  onPress={this.onActionB.bind(this)}>
         <Text style={styles.title}>
           Contacts View
         </Text>
+        </TouchableOpacity>
+
+
+        <TextInput
+                style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                onChangeText={(text) => this.setState({text})}
+                value={this.state.text}
+              />
 
         <TouchableOpacity  onPress={this.onAction.bind(this)}>
           <Text style={styles.title}>ActionView</Text>
