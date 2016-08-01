@@ -103,37 +103,47 @@ class RNNavigatorDemo extends Component {
     // return(
     //   <RefreshListView ></RefreshListView>
     // )
-
+    let view = this._renderNavigatorView('search');
     return (
-      <TabBarIOS
-        tintColor="white"
-        barTintColor="#1565C0">
-        <TabBarIOS.Item
-          title="List"
-          systemIcon="search"
-          selected={this.state.selectedTab === 'search'}
-          onPress={() => {
-            this.setState({
-              selectedTab: 'search',
-            });
-          }}>
-          {this._renderNavigatorView('search')}
-        </TabBarIOS.Item>
-        <TabBarIOS.Item
-          systemIcon="contacts"
-          badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
-          selected={this.state.selectedTab === 'contacts'}
-          title='contacts'
-          onPress={() => {
-            this.setState({
-              selectedTab: 'contacts',
-              notifCount: this.state.notifCount + 1,
-            });
-          }}>
-          {this._renderNavigatorView('contacts')}
-        </TabBarIOS.Item>
-      </TabBarIOS>
-    );
+      <Navigator
+        // ref={this._setNavigatorRef.bind(this)}
+        ref={'searchRef'}
+        initialRoute={{view: 'search'}}
+        renderScene={this._renderScene.bind(this)}
+        configureScene={this._configureScene.bind(this)}
+      />
+    )
+
+    // return (
+    //   <TabBarIOS
+    //     tintColor="white"
+    //     barTintColor="#1565C0">
+    //     <TabBarIOS.Item
+    //       title="List"
+    //       systemIcon="search"
+    //       selected={this.state.selectedTab === 'search'}
+    //       onPress={() => {
+    //         this.setState({
+    //           selectedTab: 'search',
+    //         });
+    //       }}>
+    //       {this._renderNavigatorView('search')}
+    //     </TabBarIOS.Item>
+    //     <TabBarIOS.Item
+    //       systemIcon="contacts"
+    //       badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
+    //       selected={this.state.selectedTab === 'contacts'}
+    //       title='contacts'
+    //       onPress={() => {
+    //         this.setState({
+    //           selectedTab: 'contacts',
+    //           notifCount: this.state.notifCount + 1,
+    //         });
+    //       }}>
+    //       {this._renderNavigatorView('contacts')}
+    //     </TabBarIOS.Item>
+    //   </TabBarIOS>
+    // );
   }
 }
 
