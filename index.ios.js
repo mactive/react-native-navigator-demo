@@ -16,6 +16,7 @@ import Contacts from './app/views/Contacts'
 import Search from './app/views/Search'
 import Login from './app/views/Login'
 import Sample from './app/views/Sample'
+import PhoneList from './app/views/PhoneList'
 import Replace from './app/views/Replace'
 // import RefreshListView from './app/views/RefreshListView'
 import _ from 'lodash'
@@ -85,6 +86,9 @@ class RNNavigatorDemo extends Component {
       case 'sample':
         return <Sample route={route} navigator={navigator} />
       break;
+      case 'phonelist':
+        return <PhoneList route={route} navigator={navigator} />
+      break;
       case 'replace':
         return <Replace route={route} navigator={navigator} />
         break;
@@ -103,47 +107,46 @@ class RNNavigatorDemo extends Component {
     // return(
     //   <RefreshListView ></RefreshListView>
     // )
-    let view = this._renderNavigatorView('search');
-    return (
-      <Navigator
-        // ref={this._setNavigatorRef.bind(this)}
-        ref={'searchRef'}
-        initialRoute={{view: 'search'}}
-        renderScene={this._renderScene.bind(this)}
-        configureScene={this._configureScene.bind(this)}
-      />
-    )
-
     // return (
-    //   <TabBarIOS
-    //     tintColor="white"
-    //     barTintColor="#1565C0">
-    //     <TabBarIOS.Item
-    //       title="List"
-    //       systemIcon="search"
-    //       selected={this.state.selectedTab === 'search'}
-    //       onPress={() => {
-    //         this.setState({
-    //           selectedTab: 'search',
-    //         });
-    //       }}>
-    //       {this._renderNavigatorView('search')}
-    //     </TabBarIOS.Item>
-    //     <TabBarIOS.Item
-    //       systemIcon="contacts"
-    //       badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
-    //       selected={this.state.selectedTab === 'contacts'}
-    //       title='contacts'
-    //       onPress={() => {
-    //         this.setState({
-    //           selectedTab: 'contacts',
-    //           notifCount: this.state.notifCount + 1,
-    //         });
-    //       }}>
-    //       {this._renderNavigatorView('contacts')}
-    //     </TabBarIOS.Item>
-    //   </TabBarIOS>
-    // );
+    //   <Navigator
+    //     // ref={this._setNavigatorRef.bind(this)}
+    //     ref={'searchRef'}
+    //     initialRoute={{view: 'phonelist'}}
+    //     renderScene={this._renderScene.bind(this)}
+    //     configureScene={this._configureScene.bind(this)}
+    //   />
+    // )
+
+    return (
+      <TabBarIOS
+        tintColor="white"
+        barTintColor="#1565C0">
+        <TabBarIOS.Item
+          title="List"
+          systemIcon="search"
+          selected={this.state.selectedTab === 'search'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 'search',
+            });
+          }}>
+          {this._renderNavigatorView('search')}
+        </TabBarIOS.Item>
+        <TabBarIOS.Item
+          systemIcon="contacts"
+          badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
+          selected={this.state.selectedTab === 'contacts'}
+          title='contacts'
+          onPress={() => {
+            this.setState({
+              selectedTab: 'contacts',
+              notifCount: this.state.notifCount + 1,
+            });
+          }}>
+          {this._renderNavigatorView('contacts')}
+        </TabBarIOS.Item>
+      </TabBarIOS>
+    );
   }
 }
 
